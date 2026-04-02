@@ -7,6 +7,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        index: resolve(__dirname, 'index.html'),
         olfacta: resolve(__dirname, 'olfacta.html'),
         shiftnomad: resolve(__dirname, 'shiftnomad.html'),
         sporespot: resolve(__dirname, 'sporespot.html'),
