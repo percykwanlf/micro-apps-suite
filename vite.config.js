@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'node:path'
+import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
       input: {
-        index: resolve(__dirname, 'index.html'),
+        main: resolve(__dirname, 'index.html'),
         olfacta: resolve(__dirname, 'olfacta.html'),
         shiftnomad: resolve(__dirname, 'shiftnomad.html'),
         sporespot: resolve(__dirname, 'sporespot.html'),
