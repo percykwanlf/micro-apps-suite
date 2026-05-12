@@ -30,9 +30,10 @@ function getIfraLimitForName(ingredientName) {
  * @param {{
  *   formula: { id: string; name: string; targetVolumeMl: number; lines: Array<{ id: string; ingredientName: string; weightGrams: number|string }> };
  *   onUpdateFormula: (patch: Partial<{ name: string; targetVolumeMl: number; lines: unknown }>) => void;
+ *   onBackToSuite?: () => void;
  * }} props
  */
-export default function FormulaDashboard({ formula, onUpdateFormula }) {
+export default function FormulaDashboard({ formula, onUpdateFormula, onBackToSuite }) {
   const { name, targetVolumeMl, lines } = formula
 
   const [selectedIngredient, setSelectedIngredient] = useState(
@@ -152,6 +153,18 @@ export default function FormulaDashboard({ formula, onUpdateFormula }) {
   return (
     <div className="lab-grid h-full">
       <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+        {onBackToSuite ? (
+          <nav className="mb-6" aria-label="Suite navigation">
+            <button
+              type="button"
+              onClick={onBackToSuite}
+              className="inline-flex items-center gap-2 rounded-lg border border-lab-border bg-lab-surface px-3 py-2 font-mono text-xs font-medium uppercase tracking-wider text-lab-muted shadow-panel transition hover:border-lab-accent/40 hover:text-lab-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-lab-accent/40"
+            >
+              <span aria-hidden="true">←</span>
+              All apps
+            </button>
+          </nav>
+        ) : null}
         <header className="mb-10 flex flex-col gap-6 border-b border-lab-border pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0 flex-1">
             <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-lab-accent">

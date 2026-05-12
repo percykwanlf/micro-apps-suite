@@ -3,7 +3,7 @@ import { Search, Plus, Trash2, Menu, X } from 'lucide-react';
 
 const CATEGORIES = ['Cleaning', 'Cooking/Recipes', 'Laundry', 'Emergency/Contacts', 'Misc Rules'];
 
-export default function HouseholdManual() {
+export default function HouseholdManual({ onBackToSuite }) {
   const [instructions, setInstructions] = useState([]);
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
@@ -41,6 +41,15 @@ export default function HouseholdManual() {
       {/* Sidebar */}
       <div className="w-full md:w-64 bg-slate-800 text-white p-6">
         <h2 className="text-xl font-bold mb-6">Manual</h2>
+        {typeof onBackToSuite === 'function' ? (
+          <button
+            type="button"
+            onClick={onBackToSuite}
+            className="mb-6 w-full rounded-lg border border-slate-600 bg-slate-900/50 px-3 py-2.5 text-left text-sm font-medium text-slate-200 transition hover:border-slate-500 hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            ← All apps
+          </button>
+        ) : null}
         {CATEGORIES.map(cat => (
           <button key={cat} onClick={() => setActiveCategory(cat)} 
             className={`w-full text-left p-3 rounded mb-2 ${activeCategory === cat ? 'bg-blue-600' : 'hover:bg-slate-700'}`}>
