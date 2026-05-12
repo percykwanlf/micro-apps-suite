@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:olfacta": "vite --open /olfacta.html",
+    "dev:shiftnomad": "vite --open /shiftnomad.html",
+    "dev:sporespot": "vite --open /sporespot.html",
     "build": "vite build",
     "preview": "vite preview"
   },
